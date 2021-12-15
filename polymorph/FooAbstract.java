@@ -1,5 +1,9 @@
 abstract class FooAbstract implements FooInterface{
     int x = 7;
+    static int z;
+
+    //final static int a;
+    //public final static int ABC;
 
     abstract void makeFoo();
 
