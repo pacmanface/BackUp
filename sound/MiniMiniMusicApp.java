@@ -29,7 +29,6 @@ public class MiniMiniMusicApp {
             sequencer.start();
 
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
         }
 
