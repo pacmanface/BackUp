@@ -9,11 +9,21 @@ import javax.swing.JPanel;
  */
 public class MyJpanel extends JPanel {
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(Color.YELLOW);
-        g.fillRect(20, 50, 100, 100);
+    private int x;
+    private int y;
+
+    public void setXY(int x, int y){
+        this.x=x;
+        this.y=y;
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        g.setColor(Color.white);
+        g.fillRect(0, 0, getWidth(), getHeight());
+
+        g.setColor(Color.YELLOW);
+        g.fillRect(x, y, 100, 100);
+    }
     
 }
