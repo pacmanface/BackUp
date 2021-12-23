@@ -1,22 +1,20 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
 import panels.MyJpanel;
 
-import java.awt.event.*;
-import java.awt.*;
 
 /**
  * TwoButtonGui
  */
-public class TwoButtonGui {
+public class TwoActionListenerGui {
 
     JFrame frame;
     JLabel lable;
 
     public static void main(String[] args) {
-        TwoButtonGui tGui = new TwoButtonGui();
+        TwoActionListenerGui tGui = new TwoActionListenerGui();
         tGui.go();
     }
 
@@ -25,7 +23,7 @@ public class TwoButtonGui {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                
         lable = new JLabel("lable origin");
-        
+
         JButton colorB = new JButton("color button");
         colorB.addActionListener(new ColorButtonListener());
 

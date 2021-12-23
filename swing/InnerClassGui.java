@@ -1,41 +1,28 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.plaf.ColorUIResource;
-
-import panels.MyJpanel;
-
+import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class JPanelTestGui implements ActionListener {
+public class InnerClassGui implements ActionListener {
 
-    JFrame frame;
     InnerJPanel panel;
     JButton button;
-    MyJpanel myJpanel;
-    JLabel label;
-
-    int x;
-    int y;
+    int x,y;
 
     public static void main(String[] args) {
-        JPanelTestGui jTestGui = new JPanelTestGui();
+        InnerClassGui jTestGui = new InnerClassGui();
         jTestGui.go();
     }
 
     void go(){
-        frame = new JFrame();
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         panel = new InnerJPanel();
-        //myJpanel = new MyJpanel();
         button = new JButton("Саввуся, жми кнопку");
-        label = new JLabel("Здесь будет цвет!");
+        JLabel label = new JLabel("Здесь будет цвет!");
         
         button.addActionListener(this);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(BorderLayout.NORTH,label);
-        //frame.getContentPane().add(BorderLayout.CENTER, myJpanel);
         frame.getContentPane().add(BorderLayout.CENTER, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, button);
 
@@ -47,8 +34,6 @@ public class JPanelTestGui implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = (int) (Math.random()*350);
         y = (int) (Math.random()*350);
-        //myJpanel.setXY(x, y);
-        //myJpanel.repaint();
         panel.repaint();
         button.setText("Нажато "+x+" "+y);
     }
@@ -58,7 +43,6 @@ public class JPanelTestGui implements ActionListener {
         protected void paintComponent(Graphics g) {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
-
 
             g.setColor(Color.green);
             g.fillOval(x, y, 100, 100);
