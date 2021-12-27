@@ -25,7 +25,7 @@ public class QuizCardBuilder {
         question.setLineWrap(true);
         question.setWrapStyleWord(true);
 
-        JScrollPane qScroller = JScrollPane(question);
+        JScrollPane qScroller = new JScrollPane(question);
         qScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         answer = new JTextArea(6,20);
@@ -41,6 +41,7 @@ public class QuizCardBuilder {
         JLabel qLabel = new JLabel("Question");
         JLabel aLabel = new JLabel("Answer");
 
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(qLabel);
         panel.add(qScroller);
         panel.add(aLabel);
@@ -62,32 +63,38 @@ public class QuizCardBuilder {
         menuBar.add(fileMenu);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMenuBar(menuBar);
+        frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, panel);
-        frame.setSize(600, 600);
+        frame.setSize(540, 600);
         frame.setVisible(true);
-
-
     }
 
     public class NextCardListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            QuizCard card = new QuizCard(question.getText(),answer.getText());
+            cardList.add(card);
+            clearCard();
         }
     }
 
     public class SaveMenuListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            QuizCard card = new QuizCard(question.getText(),answer.getText());
+            cardList.add(card);
+
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showSaveDialog(frame);
+            saveFile(fileChooser.getSelectedFile());
         }
     }
 
     public class NewMenuListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            cardList.clear();
+            clearCard();
         }
     }
 

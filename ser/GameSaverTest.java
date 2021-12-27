@@ -11,6 +11,7 @@ public class GameSaverTest {
             os.writeObject(one);
             os.writeObject(two);
             os.writeObject(three);
+            os.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,6 +25,7 @@ public class GameSaverTest {
             GameCharacter oneRestored = (GameCharacter) is.readObject();
             GameCharacter twoRestored = (GameCharacter) is.readObject();
             GameCharacter threeRestored = (GameCharacter) is.readObject();
+            is.close();
 
             System.out.println(oneRestored.getType());
             System.out.println(twoRestored.getType());
