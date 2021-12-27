@@ -171,19 +171,23 @@ public class BeatBox {
     public class MySaveListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean[] checkFlag = new boolean[256];
-            int i = 0;
-            for (JCheckBox jCheckBox : cList) {
-                checkFlag[i] = jCheckBox.isSelected();
-                i++;
-            } 
-            try {
-                ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("checkBox.ser"));
-                os.writeObject(checkFlag);
-                os.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            if(!cList.isEmpty()){
+                boolean[] checkFlag = new boolean[256];
+                int i = 0;
+                for (JCheckBox jCheckBox : cList) {
+                    checkFlag[i] = jCheckBox.isSelected();
+                    i++;
+                } 
+                try {
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.showSaveDialog(frame);
+                    ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(chooser.getSelectedFile()));
+                    os.writeObject(checkFlag);
+                    os.close();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }   
         }
     }
 
@@ -192,19 +196,20 @@ public class BeatBox {
         public void actionPerformed(ActionEvent e) {
             boolean[] checkFlag = null;
             try {
-                ObjectInputStream is = new ObjectInputStream(new FileInputStream("CheckBox.ser"));
+                JFileChooser chooser = new JFileChooser();
+                chooser.showOpenDialog(frame);
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream(chooser.getSelectedFile()));
                 checkFlag = (boolean[]) is.readObject();
                 is.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
             if(checkFlag != null){
-                cList.clear();
                 for (int i = 0; i < 256; i++) {
-                    JCheckBox cBox = new JCheckBox();
+                    JCheckBox cBox = cList.get(i);
                     cBox.setSelected(checkFlag[i]);
-                    cList.add(cBox);
                 }
+                frame.repaint();
             }
         }
     }

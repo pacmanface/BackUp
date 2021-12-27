@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "ser",
-        "quiz"
+        "quiz",
+        "sockets"
     ]
 }
