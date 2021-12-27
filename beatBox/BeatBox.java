@@ -1,8 +1,12 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 import javax.sound.midi.*;
+import javax.swing.*;
 
 public class BeatBox {
     JFrame frame;
@@ -37,17 +41,23 @@ public class BeatBox {
         JButton stop = new JButton("Stop");
         JButton upTempo = new JButton("Tempo Up");
         JButton downTempo = new JButton("Tempo Down");
+        JButton save = new JButton("SaveBeats");
+        JButton open = new JButton("OpenBeats");
         label = new JLabel("tempo is ");
 
         start.addActionListener(new MyStartListener());
         stop.addActionListener(new MyStopListener());
         upTempo.addActionListener(new MyUpTempoListener());
         downTempo.addActionListener(new MyDownTempoListener());
+        save.addActionListener(new MySaveListener());
+        open.addActionListener(new MyOpenListener());
 
         buttonBox.add(start);
         buttonBox.add(stop);
         buttonBox.add(upTempo);
         buttonBox.add(downTempo);
+        buttonBox.add(save);
+        buttonBox.add(open);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (String name: instrumentNames) {
@@ -104,7 +114,7 @@ public class BeatBox {
 
         try {
             sequencer.setSequence(seq);
-            sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
+            sequencer.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);
             sequencer.start();
             sequencer.setTempoInBPM(120);
         } catch (Exception e) {
@@ -158,10 +168,50 @@ public class BeatBox {
         }
     }
 
+    public class MySaveListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boolean[] checkFlag = new boolean[256];
+            int i = 0;
+            for (JCheckBox jCheckBox : cList) {
+                checkFlag[i] = jCheckBox.isSelected();
+                i++;
+            } 
+            try {
+                ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("checkBox.ser"));
+                os.writeObject(checkFlag);
+                os.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public class MyOpenListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            boolean[] checkFlag = null;
+            try {
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream("CheckBox.ser"));
+                checkFlag = (boolean[]) is.readObject();
+                is.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            if(checkFlag != null){
+                cList.clear();
+                for (int i = 0; i < 256; i++) {
+                    JCheckBox cBox = new JCheckBox();
+                    cBox.setSelected(checkFlag[i]);
+                    cList.add(cBox);
+                }
+            }
+        }
+    }
+
     void makeTracks(int... list){
         for (int i = 0; i < 16; i++) {
             int key = list[i];
-
             if(key!=0){
                 track.add(makeEvent(144,9,key,100,i));
                 track.add(makeEvent(128,9,key,100,i+1));

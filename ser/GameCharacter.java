@@ -1,9 +1,11 @@
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class GameCharacter implements Serializable{
-    String power;
-    String type;
-    String[] weapons;
+    private String power;
+    private String type;
+    private String[] weapons;
+    static boolean isTrue = true;
 
     public GameCharacter(String power, String type, String[] weapons){
         this.type = type;
@@ -11,20 +13,8 @@ public class GameCharacter implements Serializable{
         this.weapons = weapons;
     }
 
-    String getPower(){
-        return power;
+    @Override
+    public java.lang.String toString() {
+        return String.format("type is %s, power is %s, weapons is %s", type,power,Arrays.toString(weapons));
     }
-
-    String getType(){
-        return type;
-    }
-
-    String getWeapons(){
-        String res = "";
-            for (String s : weapons) {
-                res += s;
-            }
-        return res;
-    }
-    
 }
