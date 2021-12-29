@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "ser",
         "quiz",
-        "sockets"
+        "sockets",
+        "threads"
     ]
 }
