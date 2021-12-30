@@ -17,28 +17,28 @@ public class RayanAndMonicaJob implements Runnable {
     @Override
     public void run() {
         for (int index = 0; index < 10; index++) {
-            makeWithdraw(10);
+            makeWithdraw(index, 10);
+            /*
             if(account.getBalance()<0){
-                System.out.println("OUTLIMITED!");
-            }
+                System.out.println(index + "-" + Thread.currentThread().getName() + " Negative balance!");
+            */
         }
     }
 
-    void makeWithdraw(int amount){
+    synchronized void makeWithdraw(int transaction, int amount){
         if(account.getBalance()>=amount){
-            System.out.println(Thread.currentThread().getName() + " STARTED");
             try {
-                System.out.println(Thread.currentThread().getName() + " PAUSED");
+                System.out.println(transaction +"-"+ Thread.currentThread().getName() + " STARTED");
+                System.out.println(transaction +"-"+Thread.currentThread().getName() + " PAUSED");
                 Thread.sleep(500);
+                System.out.println(transaction +"-"+Thread.currentThread().getName() + " CONTINUED");
+                account.withdraw(amount);
+                System.out.println(transaction +"-"+Thread.currentThread().getName()+" FINISHED, " + account.getBalance());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread().getName() + " CONTINUED");
-            account.withdraw(amount);
-            System.out.println(Thread.currentThread().getName()+" FINISHED, " + account.getBalance());
         }else{
-    
-            System.out.println(Thread.currentThread().getName()+" BROKEN (negative balance)");
+            System.out.println(transaction +"-"+Thread.currentThread().getName()+ " OUTLIMITED!");
         }
     }
 }
