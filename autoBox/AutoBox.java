@@ -7,6 +7,7 @@ public class AutoBox {
     
     void go(){
         b=a;
+        //a=b;
         System.out.println(a);
         System.out.println(b);
     }
