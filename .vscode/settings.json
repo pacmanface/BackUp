@@ -1,12 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "threads",
-        "sockets",
-        "ser",
-        "quiz",
-        "collections",
-        "autoBox",
         "abc/source",
-        "beatBox/source"
+        "abstractfoos/source"
     ]
 }
