@@ -1,12 +1,13 @@
 import java.io.*;
 import java.util.*;
 
-public class JukeBox3 {
+public class JukeBox5{
     
     ArrayList<Song> list = new ArrayList<>();
+    Set<Song> set = new TreeSet<>();
 
     public static void main(String[] args) {
-        JukeBox3 songMachine = new JukeBox3();
+        JukeBox5 songMachine = new JukeBox5();
         songMachine.go();
     }
 
@@ -30,9 +31,10 @@ public class JukeBox3 {
             ioex.printStackTrace();
         }
         System.out.println(list);
-        Collections.sort(list, new TimeComparator());
+        Collections.sort(list);
+        set.addAll(list);
         System.out.println();
-        System.out.println(list);
+        System.out.println(set);
     }
 
     void addText(String line){

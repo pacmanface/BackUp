@@ -4,7 +4,9 @@
         "sockets",
         "ser",
         "quiz",
+        "collections",
         "autoBox",
-        "collections"
+        "abc/source",
+        "beatBox/source"
     ]
 }

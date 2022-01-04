@@ -1,4 +1,4 @@
-class abc{
+class TesAbc{
     public static void main(String[] args) {
         a a = new a();
         b b = new b();

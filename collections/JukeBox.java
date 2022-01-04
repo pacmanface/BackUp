@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class JukeBox {
     
@@ -21,6 +22,9 @@ public class JukeBox {
         }catch(IOException ioex){
             ioex.printStackTrace();
         }
+        System.out.println(list);
+        Collections.sort(list);
+        System.out.println(list);
     }
 
     void addText(String line){
