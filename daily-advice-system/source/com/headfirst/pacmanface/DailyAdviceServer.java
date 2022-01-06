@@ -1,26 +1,32 @@
+package com.headfirst.pacmanface;
+
 import java.io.*;
 import java.net.*;
 
-public class DailyAdviceServer {
-    public static void main(String[] args) {
-        DailyAdviceServer server = new DailyAdviceServer();
-        server.go();
-    }
-    
-    void go(){
-        try {
-            ServerSocket serverSocket = new ServerSocket(4242);
+public class DailyAdviceServer implements Runnable{
 
+    @Override
+    public void run() {
+        try {
+            System.out.println("advice is loading ...br-br-br");
+            System.out.println();
+            go();
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println("Oops Server thread made some tricks");
+        }
+    }
+        
+    void go(){
+        try(ServerSocket serverSocket = new ServerSocket(4242)){
             while (true) {
                 Socket socket = serverSocket.accept();
                 PrintWriter pw = new PrintWriter(socket.getOutputStream());
                 String advice = getAdvice();
                 pw.println(advice);
                 pw.close();
-                System.out.println(advice);
-                serverSocket.close();
+                //System.out.println(advice);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

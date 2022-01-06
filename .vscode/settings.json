@@ -1,6 +1,9 @@
 {
     "java.project.sourcePaths": [
         "abc/source",
-        "abstractfoos/source"
+        "abstract-foos/source",
+        "autobox/source",
+        "beatbox/source",
+        "daily-advice-system/source",
     ]
 }
