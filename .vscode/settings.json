@@ -5,5 +5,12 @@
         "autobox/source",
         "beatbox/source",
         "daily-advice-system/source",
+        "myRMI/src",
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/pacmanface/Downloads/javax.servlet-api-3.1.0.jar",
+        "/home/pacmanface/Downloads/json-20140107.jar",
+        "/home/pacmanface/Downloads/testng-7.5.jar"
     ]
 }
