@@ -1,3 +1,5 @@
+package com.headfirst.pacmanface;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -11,11 +13,6 @@ public class QuizCardBuilder {
     private ArrayList<QuizCard> cardList;
     private JFrame frame;
 
-    public static void main(String[] args) {
-        QuizCardBuilder builder = new QuizCardBuilder();
-        builder.go();
-    }
-    
     void go(){
         frame = new JFrame("Quiz Card Builder");
         JPanel panel = new JPanel();
@@ -83,7 +80,6 @@ public class QuizCardBuilder {
         public void actionPerformed(ActionEvent e) {
             QuizCard card = new QuizCard(question.getText(),answer.getText());
             cardList.add(card);
-
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.showSaveDialog(frame);
             saveFile(fileChooser.getSelectedFile());
@@ -117,6 +113,4 @@ public class QuizCardBuilder {
             e.printStackTrace();
         }
     }
-
-
 }

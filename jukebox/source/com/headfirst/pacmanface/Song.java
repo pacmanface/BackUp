@@ -1,3 +1,5 @@
+package com.headfirst.pacmanface;
+
 public class Song implements Comparable<Song> {
 
     private String title;

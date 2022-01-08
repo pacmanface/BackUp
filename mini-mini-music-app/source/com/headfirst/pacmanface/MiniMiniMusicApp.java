@@ -1,3 +1,5 @@
+package com.headfirst.pacmanface;
+
 import javax.sound.midi.*;
 
 public class MiniMiniMusicApp {
@@ -10,9 +12,7 @@ public class MiniMiniMusicApp {
         try {
             Sequencer sequencer = MidiSystem.getSequencer();
             sequencer.open();
-
             Sequence seq = new Sequence(Sequence.PPQ,4);
-
             Track track = seq.createTrack();
 
             ShortMessage aMessage = new ShortMessage();
@@ -27,10 +27,8 @@ public class MiniMiniMusicApp {
 
             sequencer.setSequence(seq);
             sequencer.start();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

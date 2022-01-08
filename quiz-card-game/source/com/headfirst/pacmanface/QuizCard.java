@@ -1,3 +1,5 @@
+package com.headfirst.pacmanface;
+
 public class QuizCard {
     private String answer;
     private String question;

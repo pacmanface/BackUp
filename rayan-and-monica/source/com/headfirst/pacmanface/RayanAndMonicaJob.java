@@ -1,4 +1,4 @@
-package RayanAndMonica;
+package com.headfirst.pacmanface;
 
 public class RayanAndMonicaJob implements Runnable {
 

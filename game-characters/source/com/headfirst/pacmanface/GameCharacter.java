@@ -1,6 +1,7 @@
-package source;
-import java.io.Serializable;
-import java.util.Arrays;
+package com.headfirst.pacmanface;
+
+import java.io.*;
+import java.util.*;
 
 public class GameCharacter implements Serializable{
     private String power;

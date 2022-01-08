@@ -1,4 +1,5 @@
-package source;
+package com.headfirst.pacmanface;
+
 import java.io.*;
 
 public class GameLoader {

@@ -1,6 +1,6 @@
 package com.headfirst.pacmanface;
 
-import java.rmi.Naming;
+import java.rmi.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -8,7 +8,6 @@ public class MyRMIInterfaceImpl extends UnicastRemoteObject implements MyRMIInte
 
     @Override
     public String helloRMI(){
-        // TODO Auto-generated method stub
         return "Remote Hello World";
     }
 
@@ -19,7 +18,6 @@ public class MyRMIInterfaceImpl extends UnicastRemoteObject implements MyRMIInte
             MyRMIInterface implMyRMIInterface = new MyRMIInterfaceImpl();
             Naming.bind("Remote Hello", implMyRMIInterface);
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
         }
     }
