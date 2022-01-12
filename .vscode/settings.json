@@ -20,11 +20,14 @@
         "swing-gui's/source",
         "very-simple-servlet/src",
         "phrase-o-matic-servlet/src",
+        "final-service/src"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/pacmanface/Downloads/javax.servlet-api-3.1.0.jar",
         "/home/pacmanface/Downloads/json-20140107.jar",
-        "/home/pacmanface/Downloads/testng-7.5.jar"
+        "/home/pacmanface/Downloads/testng-7.5.jar",
+        "phrase-o-matic-servlet/lib/javax.servlet-api-3.1.0.jar",
+        "final-service/lib/javax.servlet-api-3.1.0.jar",
     ]
 }
