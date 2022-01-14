@@ -11,7 +11,6 @@ class Foo extends FooAbstract {
 
     @Override
     void makeFoo() {
-        // TODO Auto-generated method stub
         System.out.println("Ovveriden makeFoo method from FooAbstract");
     }
     

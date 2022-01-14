@@ -1,3 +1,5 @@
+package com.headfirst.pacmanface;
+
 import javax.sound.midi.*;
 
 public class MiniMusicPlayer {

@@ -12,7 +12,6 @@ public class DailyAdviceServer implements Runnable{
             System.out.println();
             go();
         } catch (Exception e) {
-            //TODO: handle exception
             System.out.println("Oops Server thread made some tricks");
         }
     }
