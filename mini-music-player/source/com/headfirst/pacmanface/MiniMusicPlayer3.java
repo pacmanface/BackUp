@@ -1,7 +1,6 @@
 package com.headfirst.pacmanface;
 
 import javax.sound.midi.*;
-import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 
