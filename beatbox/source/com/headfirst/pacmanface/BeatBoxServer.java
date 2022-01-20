@@ -7,10 +7,6 @@ import java.util.*;
 public class BeatBoxServer {
     ArrayList<ObjectOutputStream> clientOutputStreams;
 
-    public static void main(String[] args) {
-        new BeatBoxServer().go();
-    }
-
     public void go(){
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
             while(true){
@@ -45,7 +41,7 @@ public class BeatBoxServer {
             Object one = null;
             Object two = null;
             try {
-                if((one = in.readObject())!=null) {
+                while((one = in.readObject())!=null) {
                     two = in.readObject();
                     System.out.print("got the pair of objects");
                     tellEveryone(one, two);
@@ -54,17 +50,17 @@ public class BeatBoxServer {
                 e.printStackTrace();
             }
         }
+    }
 
-        public void tellEveryone(Object one, Object two){
-            Iterator<ObjectOutputStream> iterator = clientOutputStreams.iterator();
-            while(iterator.hasNext()){
-                try {
-                    ObjectOutputStream out = iterator.next();
-                    out.writeObject(one);
-                    out.writeObject(two);    
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    public void tellEveryone(Object one, Object two){
+        Iterator<ObjectOutputStream> iterator = clientOutputStreams.iterator();
+        while(iterator.hasNext()){
+            try {
+                ObjectOutputStream out = iterator.next();
+                out.writeObject(one);
+                out.writeObject(two);    
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
