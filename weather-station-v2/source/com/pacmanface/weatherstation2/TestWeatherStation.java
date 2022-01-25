@@ -4,7 +4,6 @@ public class TestWeatherStation{
 	
 	public static void main(String[]args){
 		WeatherDataObservable observable = new WeatherDataObservable();
-		
 		Thread thread = new Thread(observable);
 		thread.setDaemon(true);
 		thread.run();

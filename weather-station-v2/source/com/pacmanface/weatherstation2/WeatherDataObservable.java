@@ -12,7 +12,14 @@ public class WeatherDataObservable implements Observable,Runnable{
 	
 	@Override
 	public void run() {
-		while(true) checkData();
+		while(true){
+			try {
+				checkData();
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}	
+		} 
 	}
 
 	public void checkData(){

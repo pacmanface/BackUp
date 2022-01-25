@@ -1,15 +1,102 @@
-1. Выделить изменяемые аспекты поведения и инкапсулировать их.
+Главная особенность кода - изменяемость. 
+Со временем меняются люди, цели, задачи, обстоятельства.
+Соответсвенно необходимо будет менять и написанный код. 
+Время и усилия людей, затраченные на адаптацию кода к изменившимся условиям называют поддержкой. 
+Написанному коду всегда нужна поддержка. 
+Сколько времени и сил уйдет на поддержку зависит от архитектуры.
+У архитектуры кода, есть общие принципы её построения. Они базируются на принципах ООП, расширяют и дополняют их.
+- АБСТРАКЦИЯ
+- ИНКАПСУЛЯЦИЯ
+- ПОЛИМОРФИЗМ  
+- НАСЛЕДОВАНИЕ 
 
+
+Принципы Архитектуры ПО
+
+1. Выделить изменяемые аспекты поведения и инкапсулировать их. 
+Это позволяет создать алгоритм поведения.
+	
+	class A{
+		void doSmth(){
+			//do it like A does;
+		}
+	}
+	
+	class B extends A {
+		//you do it like A or override;
+	}
+	
+	interface DoSmth{
+		void doSmth();
+	}
+	
+	class A,B,C... implements DoSmth{
+		//everybody do smth;
+	}
+	
 2. Программировать на уровне интерфейсов, а не реализации.
+Расширяем наш алгоритм сколько угодно, не трогая уже написанный код.
 
-	уровень реализации	
+	уровень реализации
+	
+	class Dog{
+		void bark(){
+			//bark somehow;
+		}
+	}	
 	Dog dog = new Dog();
 	dog.bark();
 
 	уровень интерфейса
-	Animal animal = getAnimal();
-	animal.performSound();
-
+	
+	interface SoundPerformer{
+		void performSound();
+	}	
+	
+	class Dog implement SoundPerformer{
+		void performSound(){
+			//bark like a dog;
+		}
+	}
+	
+	Dog dog = new Dog();
+	dog.performSound();
+	
 3. Композиция вместо наследования.
+Впоследствии можно делегировать исполнение этого алгоритма вообще кому угодно. 
+	
+	interface SoundPerformer{
+		void performSound();
+	}
+	
+	class SoundPerformerImpl implements SoundPerformer{
+		void performSound(){
+			//bark like dog;
+		}
+	}
+	
+	class Dog{
+		SoundPerformer perform;
+		
+		void bark(){
+			performer.perfomSound();
+		}
+	}
 
-4. Слабая связность объектов. 
+4. Слабая связь объектов. 
+Они должны "знать" друг о друге как можно меньше.  
+
+	interface SoundPerformer{
+		void performSound();
+	}
+	abstract class Animal{
+		SoundPerformer performer;
+		
+		void makeSound(){
+			performer.performSound();
+		}
+	}
+		
+	Animal animal = getAnimal();
+	animal.makeSound();
+
