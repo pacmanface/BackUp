@@ -1,6 +1,5 @@
 package com.pacmanface.starbuzz;
 
-
 public class Soy extends CondimentBeverage{
 	
 	private Beverage beverage;

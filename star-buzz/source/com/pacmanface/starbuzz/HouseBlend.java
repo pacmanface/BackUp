@@ -2,7 +2,7 @@ package com.pacmanface.starbuzz;
 
 public class HouseBlend extends Beverage{
 
-	pubic String getDescription(){
+	public String getDescription(){
 		return "This is a House blend";
 	}
 	
