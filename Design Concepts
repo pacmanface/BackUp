@@ -83,15 +83,15 @@
 		}
 	}
 
-4. Слабая связь объектов. 
-Они должны "знать" друг о друге как можно меньше.  
+4. Слабая связь взаимодействующих объектов. 
+Они должны "знать" друг о друге как можно меньше. Это делает их пригодными для повторного использования. 
 
 	interface SoundPerformer{
 		void performSound();
 	}
 	abstract class Animal{
 		SoundPerformer performer;
-		
+
 		void makeSound(){
 			performer.performSound();
 		}
@@ -99,4 +99,7 @@
 		
 	Animal animal = getAnimal();
 	animal.makeSound();
+
+5. Открытость компонентов к расширению при закрытости к изменениям.
+	
 
