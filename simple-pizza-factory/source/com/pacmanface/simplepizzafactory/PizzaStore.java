@@ -7,6 +7,6 @@ public class PizzaStore{
 		pizza.prepare();
 		pizza.cut();
 		pizza.pack();
-		pizza.deliver();
+		pizza.delivery();
 	}	
 }

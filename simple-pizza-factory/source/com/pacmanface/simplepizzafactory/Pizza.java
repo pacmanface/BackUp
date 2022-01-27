@@ -16,7 +16,7 @@ public abstract class Pizza{
 		System.out.println(type+" packing");
 	}
 	
-	void deliver(){
+	void delivery(){
 		System.out.println("take your "+type+" sir");
 	}
 }

@@ -7,7 +7,7 @@ public class SimplePizzaFactory{
 		switch(type){
 			case "Alfredo": pizza = new Alfredo(); break;
 			case "Pepperoni": pizza = new Pepperoni(); break;
-			case "Cheese": pizza = new Cheesee(); break;
+			case "Cheesee": pizza = new Cheesee(); break;
 			default: pizza = new Pepperoni();
 		}
 		return pizza;

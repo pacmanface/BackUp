@@ -1,14 +1,14 @@
 package com.pacmanface.simplepizzafactory;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.*;
 
 public class TestPizza{
 
-    private static final String CHEESEE = "cheesee";
+    private static final String TYPE = "Cheesee";
 
     @Test()
-    public static void simpleTestOne(){
-        Assert.assertEquals(CHEESEE, SimplePizzaFactory.createPizza(CHEESEE).type);
+    public void simpleTestOne(){
+        assertEquals(TYPE, SimplePizzaFactory.createPizza(TYPE).type);
     }
 }
