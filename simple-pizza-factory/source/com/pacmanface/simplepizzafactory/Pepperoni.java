@@ -1,8 +1,8 @@
 package com.pacmanface.simplepizzafactory;
 
-public class Pepperony extends Pizza{
+public class Pepperoni extends Pizza{
 	
-	public Pepperony(){
+	public Pepperoni(){
 		type = "Pepperony";	
 	}
 }

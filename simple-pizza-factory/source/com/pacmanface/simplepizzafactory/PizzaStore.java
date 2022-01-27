@@ -2,8 +2,8 @@ package com.pacmanface.simplepizzafactory;
 
 public class PizzaStore{
 	
-    public orderPizza(String type){
-		Pizza pizza = createPiza(type);
+    public void orderPizza(String type){
+		Pizza pizza = SimplePizzaFactory.createPizza(type);
 		pizza.prepare();
 		pizza.cut();
 		pizza.pack();

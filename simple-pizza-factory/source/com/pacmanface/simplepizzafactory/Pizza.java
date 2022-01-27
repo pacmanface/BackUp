@@ -12,11 +12,11 @@ public abstract class Pizza{
 		System.out.println(type+" cutting");
 	}
 	
-	abstract void pack(){
+	void pack(){
 		System.out.println(type+" packing");
 	}
 	
-	abstract void deliver(){
+	void deliver(){
 		System.out.println("take your "+type+" sir");
 	}
 }
