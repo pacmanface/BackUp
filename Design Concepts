@@ -76,7 +76,11 @@
 	}
 	
 	class Dog{
-		SoundPerformer perform;
+		SoundPerformer performer;
+		
+		public Dog(SoundPerformer sp){
+			performer = sp;
+		}
 		
 		void bark(){
 			performer.perfomSound();
