@@ -2,6 +2,8 @@ package com.pacmanface.smarthome;
 
 public abstract class ElectronicDevice extends Device{
     
+    //protected ElectronicDeviceFunction function;
+
     public void play(){
         System.out.println(deviceName+" is playing");
     }
@@ -13,6 +15,4 @@ public abstract class ElectronicDevice extends Device{
     public void stop(){
         System.out.println(deviceName+" has stopped");
     }
-    
-    abstract void setFunction();
 }

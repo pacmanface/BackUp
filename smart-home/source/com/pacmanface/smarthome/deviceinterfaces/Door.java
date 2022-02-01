@@ -14,6 +14,6 @@ public class Door extends DeviceInterface {
             case 1: status = "closed"; break;
             default: System.out.println("choose 1/0 to close/open the door");
         }
-        printDeviceStatus();
+        printDIStatus();
     }
 }

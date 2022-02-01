@@ -21,8 +21,8 @@ public class Temperature extends DeviceInterface {
         } 
         else System.out.println("choose 0-350 to set temperature");
         
-        printDeviceStatus();
-        System.out.print(", temperature is "+temperature);
+        printDIStatus();
+        System.out.println("device temperature is "+temperature);
     }
 
 }

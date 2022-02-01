@@ -21,7 +21,7 @@ public class Timer extends DeviceInterface {
         } 
         else System.out.println("choose 0-60 to set timer");
         
-        printDeviceStatus();
-        System.out.print(", timer is "+timer);
+        printDIStatus();
+        System.out.println("device timer is "+timer);
     }
 }

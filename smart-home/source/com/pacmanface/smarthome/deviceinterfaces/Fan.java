@@ -21,7 +21,7 @@ public class Fan extends DeviceInterface {
         } 
         else System.out.println("choose 0-3 to able fan and set speed");
         
-        printDeviceStatus();
-        System.out.print(", fan speed is "+fanSpeed);
+        printDIStatus();
+        System.out.println("device fan speed is "+fanSpeed);
     }
 }
