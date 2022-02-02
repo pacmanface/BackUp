@@ -1,90 +1,301 @@
-1."Стратегия" - выделяет семейство алгоритмов и инкапсулирует их. Что позволяет расширять алгоритм, 
-безопасно менять его реализации и динамически исполнять их за счет делегирования поведения другому объекту.
+1."Стратегия" - выделяет семейство алгоритмов/изменяемые аспекты поведения и инкапсулирует их в интерфейс(не обязательно в смысле java interface). Исполнение реализаций такого интерфейса делегируетсся самому объекту, через композицию. Теперь можно дешево расширять код добавляя реализации поведения и динамически изменять поведение обекта, передавая ему нужные нам реализации. 
 Реализуется принцип выделения переменных аспектов поведения и их инкапсуляции.
 
-2. "Наблюдатель" - демонстрирует тип отношений ОДИН КО МНОГИМ. Измененения в состоянии наблюдаемого объекта активируют поведение наблюдателей. Наблюдаемый ничего не знает о наблюдателях, а они о нем.
+//inflexible dog.
+								
+	class Dog{																				
+		void bark(){
+			//gav-gav;
+		}
+	}
+
+//elastic dog.
+
+	interface Bakr{
+		void performBarking();
+	}
+
+	class AngryBarkImpl{
+		void performBarking(){
+			//angry barking;
+		}
+	}
+
+	class DogWithStrategy{
+		Bark bark
+		
+		public DogWithStrategy(Bark b){
+			bark = b;
+		}
+		
+		void bark(){
+			bark.performBarking();
+		}
+	}
+
+2. "Наблюдатель" - демонстрирует тип отношений ОДИН КО МНОГИМ. При измененении в своем состоянии НАБЛЮДАЕМЫЙ объект инициирует изменения в состоянии наблюдателей. При этом НАБЛЮДАЕМЫЙ знает о наблюдателях только то, что они является реализациями интерфейса НАБЛЮДАТЕЛЬ. Наблюдатели знают о наблюдаемом ровно столько же. Конкретные объекты друг другу не известны.
 Реализует принцип слабой связи взаимодействующих объектов.
 
-3. "Декоратор" - динамически расширяет(дополняет, декорирует) поведение объекта за счет субклассирования. Код декорируемых объектов не меняется. Декоратор имеет один тип с компонентом, чтобы иметь возможность субклассирования.
+// we have 4 classes with different state. But it have to synchronic work together.
+
+	class StadiumLighter{									
+		void light(){
+			//it may be green;
+		}
+	}
+
+	class RaceCars{
+		void runFast(){
+			//we all start when green;
+		}
+	}
+
+	class Fans {
+		void sayWow(){
+			//we all say "WOW" when green;
+		}
+	}
+
+	class Cameras {
+		void focus(){
+			//we all focus on cars and fans when green;
+		}
+	}
+
+//Many focused on One.
+
+	interface Observers{
+		void update();
+	}
+
+	interface ObservingObject{
+		void addObserver();
+		void removeObserver();
+	}
+
+	class StadiumLighter implements ObservingObject{
+		List<Observer> list
+		
+		@Override
+		void addObserver(){
+			list.add(Observer o);
+		}
+		
+		@Override
+		removeObserver(){
+			list.remove(Observer o);
+		}
+		
+		void light(){
+			//show light;
+			if(light==green){
+				for(Observer o:list){
+					o.update
+				}
+			}
+		}
+	}
+
+	class RaceCars/Fans/Cameras implements Observer{
+		ObservingObject o
+		
+		public RaceCars(ObservingObject obj){
+			o = obj;
+		}
+		
+		void addMe(){
+			o.addObserver(this);
+		}
+		
+		void removeMe(){
+			o.removeObserver(this);
+		}
+		
+		@Override
+		void update(){
+			runFast();
+			sayWow();
+			focus();
+		}
+		
+		void runFast()/sayWow()/focus(){
+			//when green;
+		}
+	}
+
+3. "Декоратор" - при помощи субклассирования(наследования) динамически расширяет(дополняет, декорирует) поведение объекта не меняя при этом сам объект. ДЕКОРАТОР-наследник рекурсивно переопределяет метод ДЕКОРИРУЕМОГО-родителя, выполняя свой код до/после вызова оригинального родительского кода    
 Реализует принцип открытости к расширению/закрытости к изменениям.
 
-4. "Фабричный метод" - инкапсулирует создание объектов в отдельном абстрактном методе, реализация которого делегируется субклассам.
+	class Boat{
+		void float(){
+			//I swim like shit;
+		}
+	}
+
+	class SailBoat extends Boat{
+		@Override
+		void float(){
+			super.float() + and now I have a sail;
+		}
+	}
+
+4. "Простая фабрика" - идиома. Создание экземпляров класса выносится в статический метод постороннего класса. 
+
+4.1 "Фабричный метод" - инкапсулирует создание новых экземпляров класса в отдельном абстрактном методе другого класса, реализация которого делегируется субклассам этого другого класса.
+
 4.1 "Абстрактная фабрика" - фабричный метод выносится из абстрактного класса в интерфейс. Конкретные реализации интерфеса внедряются в объект с помощью композиции. 
-4.2 "Простая фабрика" - идиома. Создание экземпляров класса выносится в статический метод отдельного класса. 
 Фабричные паттерны реализуют принцип инверсии зависимостей - код должен зависеть от абстракций, а не от конкретных реализаций.
 
 5. "Одиночка" - паттерн, гарантирующий существование только одного экземпляра класса и обеспечивающий глобальный доступ к последнему. но это не точно))
 Два загрузчика классов могут загрузить 2 синглтона.
 
-class MySingle{
-	private MySingle(){}
-	private static MySingle single;
-	
-	public static MySingle getInstance(){
-		if(single==null) single = new MySingle();
-		return single;
+	class MySingle{
+		private MySingle(){}
+		private static MySingle single;
+		
+		public static MySingle getInstance(){
+			if(single==null) single = new MySingle();
+			return single;
+		}
 	}
-}
+	
 Несинхронизированный одиночка не гарантирует существование только 1 экземпляра класса.
 
-class MySingle{
-	private MySingle(){}
-	private static MySingle single;
-	
-	public static synchronized MySingle getInstance(){
-		if(single==null) single = new MySingle();
-		return single;
+	class MySingle{
+		private MySingle(){}
+		private static MySingle single;
+		
+		public static synchronized MySingle getInstance(){
+			if(single==null) single = new MySingle();
+			return single;
+		}
 	}
-}
+	
 Синхронизация будет проходить каждый раз (хотя уникальный объект надежно создастся при первом вызове метода) 
 и сожрет больше ресурсов, чем сохранит их "ленивое" создание экземпляра.
 
-class MySingle{
-	private MySingle(){}
-	private volatile static MySingle single;
-	
-	public static MySingle getInstance(){
-		if(single==null){
-			synchronized(MySingle.class){
-				if(single==null) single = new MySingle();
+	class MySingle{
+		private MySingle(){}
+		private volatile static MySingle single;
+		
+		public static MySingle getInstance(){
+			if(single==null){
+				synchronized(MySingle.class){
+					if(single==null) single = new MySingle();
+				}
 			}
+			return single;
 		}
-		return single;
 	}
-}
+	
 Создание уникального объекта произойдет при первом обращении к методу. Дальше просто раздача синглтона.
 Хотя синхронизацию пройдет столько раз, сколькопотоков успеет вы полнить if(single == null)
 
-class MySingle{
-	private MySingle(){}
-	private static MySingle single = new MySingle();
-	
-	public static MySingle getInstance(){
-		return single;
+	class MySingle{
+		private MySingle(){}
+		private static MySingle single = new MySingle();
+		
+		public static MySingle getInstance(){
+			return single;
+		}
 	}
-}
 
 Потокобезопасно. Создание уникального экземпляра на этапе загрузки класса. Нелениво.
 
-class MySingle{
-	private MySingle(){}
-	public final static MySingle SINGLE = new MySingle();	
+	class MySingle{
+		private MySingle(){}
+		public final static MySingle SINGLE = new MySingle();	
+	}
+
+	???
+	enum MySingle{
+		 new MySingle();
+	}
+
+6. "Команда" - суть паттерна, передать контроль над исполнением поведения/цепочки вычислений/алгоритма/бизнеслогики объектов в независимый объект-контроллер. Для этого объект, реализующий интерфейс "команда" инкапсулирует в себе объект-исполнитель. Метод, содежащий поведение исполнителя инкапсулируется в (функциональном) интерфейсном методе. Исполнение/регистрация команд делегируется контроллеру, параметризованному командами.  
+
+	interface Command{
+		void execute();
+	}
+
+	interface Controller{
+		void setCommand(Command cmd);
+		void executeCommand();
+	}
+
+	class Dog{
+		void bark(){
+			//gav-gav
+		}
+	}
+
+	class BarkCommand implements Command{
+		Dog dog
+		
+		public BarkCommand(Dog d){
+			dog=d;
+		}
+		
+		public void execute(){
+			dog.bark();
+		}
+	}
+
+	class DogController implements Controller{
+		Command command;
+		
+		public DogController(Command c){
+			command = c;
+		}
+		
+		public void setCommand(Command c){
+			command = c;
+		}
+		
+		public void executeCommand(){
+			command.execute();
+		}
+	}
+
+7 "Адаптер" - адаптируем один интерфейс к другому.
+
+interface Shark{
+	void sweem(); //like a devil
+	void eatSomethingBig(); //cmon beatch
 }
 
-???
-enum MySingle{
-	 new MySingle();
+interface Duck{
+	void sweem(); //like a funny boat
+	void eatSomething(); //little fish is my maximum
+	void fly(); // yes we can
+	void walk(); // slow but it's working
 }
 
-
-
-
-
-
-
-
-
-
+class DuckShark implements Duck{
+	Shark shark;
+	
+	public DuckShark(Shark s){
+		shark = s;
+	}
+	
+	public void sweem(){
+		shark.sweem(); // hello human olimpic sweemming champion 
+	}
+	
+	public void eatSomething(){
+		shark.eatSomethingBig();
+	}
+	
+	public void fly(){
+		//fly +
+		eatSomething();	
+	}
+	
+	public void walk(){
+		//walk +
+		eatSomething();
+	}
+}
 
 
 

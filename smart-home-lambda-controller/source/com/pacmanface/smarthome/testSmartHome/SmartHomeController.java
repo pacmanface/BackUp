@@ -1,6 +1,9 @@
-package com.pacmanface.smarthome;
+package com.pacmanface.smarthome.testSmartHome;
 
-public class SmartHomeController implements Invoker{
+import com.pacmanface.smarthome.Command;
+import com.pacmanface.smarthome.Controller;
+
+public class SmartHomeController implements Controller{
     private Command[] commands;
     
     public void setCommand(Command...cds){

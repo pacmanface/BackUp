@@ -1,6 +1,6 @@
 package com.pacmanface.smarthome;
 
-public interface Invoker {
+public interface Controller {
     void invoke();
     void setCommand(Command...command);
 }
