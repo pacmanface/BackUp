@@ -257,7 +257,7 @@
 		}
 	}
 
-7 "Адаптер" - адаптируем один интерфейс к другому.
+7 "Адаптер" - позволяет клиентскому коду использовать изначально несовместимый с ним интерфейс, без изменения клиентского кода. Паттерн адаптирует нужный нам интефейс (Adaptee)  к целевому/изначальному (Target) интерфейсу клиента. Адаптируемый интерфейс компонуется, а целевой интерфейс реализуется.
 
 interface Shark{
 	void sweem(); //like a devil
@@ -271,15 +271,17 @@ interface Duck{
 	void walk(); // slow but it's working
 }
 
-class DuckShark implements Duck{
+//Адаптируем акулу к утке))
+
+class SharkAdapter implements Duck{
 	Shark shark;
 	
-	public DuckShark(Shark s){
+	public SharkAdapter(Shark s){
 		shark = s;
 	}
 	
 	public void sweem(){
-		shark.sweem(); // hello human olimpic sweemming champion 
+		shark.sweem();
 	}
 	
 	public void eatSomething(){
@@ -297,6 +299,68 @@ class DuckShark implements Duck{
 	}
 }
 
+8. "Фасад" - Логически изолирует клиента от сложной архитектуры подсистемы, предоставляя ему упрощенный высокоуровневый интерфейс. Паттерн компонует необходимые клиенту интерфейсы подсистемы и вызывает у них только необходимый клиенту функционал. Кароч упрощает.
 
+interface One{
+	void do1();
+	void do2();
+	void do3();
+}
 
+interface Two{
+	void do1();
+	void do2();
+	void do3();
+}
+
+interface Three{
+	void do1();
+	void do2();
+	void do3();
+} 
+
+class FacadeExample{
+	One o;
+	Three th;
+	
+	public FacadeExample(One one, Three three){
+		o=one;
+		th=three;
+	}
+
+	void doOnlyWhatINeedNow(){
+		o.do1();
+		o.do3();
+		th.do2();
+	}
+}
+
+9. "Шаблонный метод" - инкапсулирует алгоритм (последовательность действий/методов) внутри абстрактного метода, оставляя субклассам 
+возможность самостоятельной реализации части алгоритма (за счет реализации абстракных методов алгоритма) и возможность запросов/корректировки алгоритма
+(за счет методов перехватчиков. Открытые для переопределения методы с пустой реализацией)
+
+abstract class HotBeverage{
+	public final void prepareReceipt(){
+		boilWater();
+		brewBeverage();
+		pourInCup();
+		if(isAddCondiment) addCondiment();
+	}
+	
+	public void boilWater(){
+		System.out.println("boil the water");
+	}
+	
+	abstract void brewBeverage();
+	
+	public void pourInCup(){
+		System.out.println("pour the beverage in the cup");
+	}
+	
+	abstract void addCondiment();
+	
+	public boolean isAddCondiment(){
+		return true;
+	}
+}
 
