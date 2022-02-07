@@ -2,8 +2,6 @@ package com.pacmanface.templatebeverage;
 
 abstract class HotBeverage{
 
-	//protected Feedback f;
-
 	public final void prepareReceipt(){
 		boilWater();
 		brewBeverage();
@@ -24,7 +22,6 @@ abstract class HotBeverage{
 	abstract void addCondiment();
 	
 	public boolean isAddCondiment(){
-		//return f.askUser();
 		return true;
 	}
 }
