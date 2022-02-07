@@ -15,7 +15,7 @@ class GreenTea extends HotBeverage{
 		System.out.println("Do you want any condiments for your tea?");
 		String answear = null;
 		try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-			answear = reader.readln();
+			answear = reader.readLine();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

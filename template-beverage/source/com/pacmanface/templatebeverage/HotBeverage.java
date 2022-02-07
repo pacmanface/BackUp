@@ -4,16 +4,16 @@ abstract class HotBeverage{
 
 	public final void prepareReceipt(){
 		boilWater();
-		brewBeverage();
+		brew();
 		pourInCup();
-		if(isAddCondiment) addCondiment();
+		if(isAddCondiment()) addCondiment();
 	}
 	
 	public void boilWater(){
 		System.out.println("boil the water");
 	}
 	
-	abstract void brewBeverage();
+	abstract void brew();
 	
 	public void pourInCup(){
 		System.out.println("pour the beverage in the cup");
