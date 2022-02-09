@@ -1,6 +1,9 @@
 package com.pacmanface.componentcafe;
 
-public class MenuItem extends MenuComponent{
+import java.util.Iterator;
+import com.pacmanface.componentcafe.iterators.*;
+
+public class MenuItem extends Component{
 	
 	public boolean isVegetarian;
 	public double price;
@@ -13,6 +16,11 @@ public class MenuItem extends MenuComponent{
 	}
 	
 	@Override
+	public boolean isVegan() {
+		return isVegetarian;
+	}
+
+	@Override
 	public void print(){
 		System.out.println(this.toString());
 	}
@@ -20,5 +28,10 @@ public class MenuItem extends MenuComponent{
 	@Override
 	public String toString(){
 		return name+" "+description+" "+isVegetarian+" "+price;
+	}
+
+	@Override
+	public Iterator<Component> createIterator() {
+		return new NullIterator();
 	}
 }

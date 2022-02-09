@@ -5,18 +5,19 @@ import com.pacmanface.componentcafe.*;
 
 public class TestCafe{
 	public static void main(String[]args){
-		MenuComponent desserts = new DessertMenu();
-		MenuComponent pancakes = new PancakeHouseMenu();
-		MenuComponent sandwiches = new SandwichPalaceMenu();
-		MenuComponent cafeteriaMenu = new CafeteriaMenu();
-		MenuComponent allMenus = new AllMenu();
+		Component desserts = new DessertMenu();
+		Component pancakes = new PancakeHouseMenu();
+		Component sandwiches = new SandwichPalaceMenu();
+		Component cafeteriaMenu = new CafeteriaMenu();
+		Component allMenus = new AllMenu();
 		pancakes.add(desserts);
 		allMenus.add(pancakes);
 		allMenus.add(sandwiches);
 		allMenus.add(cafeteriaMenu);
 		
 	
-		Waitress waitress = new Waitress();
-		waitress.printMenu(allMenus);
+		Waitress waitress = new Waitress(allMenus);
+		//waitress.printMenu();
+		waitress.printVegetarian();
 	}
 }

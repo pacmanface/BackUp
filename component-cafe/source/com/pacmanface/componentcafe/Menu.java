@@ -3,33 +3,44 @@ package com.pacmanface.componentcafe;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public abstract class Menu extends MenuComponent {
+import com.pacmanface.componentcafe.iterators.CompositIterator;
+
+public abstract class Menu extends Component {
     
-    public ArrayList<MenuComponent> components = new ArrayList<>();
+    public ArrayList<Component> menuComponents = new ArrayList<>();
+    public Iterator<Component> iterator = null;
 
     @Override
-    public void add(MenuComponent component) {
-        components.add(component);
+    public void add(Component component) {
+        menuComponents.add(component);
     }
 
     @Override
-    public void remove(MenuComponent component) {
-        components.remove(component);
+    public void remove(Component component) {
+        menuComponents.remove(component);
     }
 
     @Override
-    public MenuComponent getChild(int i) {
-        return components.get(i);
+    public Component getChild(int i) {
+        return menuComponents.get(i);
     }
 
     @Override
     public void print() {
         System.out.println(getName());
         System.out.println(getDescription());
-        Iterator<MenuComponent> iterator = components.iterator();
+        Iterator<Component> iterator = menuComponents.iterator();
         while(iterator.hasNext()){
-            MenuComponent menuComponent = iterator.next();
+            Component menuComponent = iterator.next();
             menuComponent.print();
         }
+    }
+
+    @Override
+    public Iterator<Component> createIterator() {
+        if(iterator==null){
+            iterator = new CompositIterator(menuComponents.iterator());
+        }
+        return iterator;
     }
 }

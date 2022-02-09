@@ -1,19 +1,21 @@
 package com.pacmanface.componentcafe; 
 
-public abstract class MenuComponent {
+import java.util.*;
+
+public abstract class Component {
     
     protected String name;
     protected String description;
 
-    public void add(MenuComponent menuItem){
+    public void add(Component menuItem){
         throw new UnsupportedOperationException();
     }
 
-    public void remove(MenuComponent menuItem){
+    public void remove(Component menuItem){
         throw new UnsupportedOperationException();
     }
 
-    public MenuComponent getChild(int i){
+    public Component getChild(int i){
         throw new UnsupportedOperationException();
     }
 
@@ -28,4 +30,10 @@ public abstract class MenuComponent {
     public void print(){
         throw new UnsupportedOperationException();
     }
+
+    public boolean isVegan(){
+        throw new UnsupportedOperationException();
+    }
+
+    public abstract Iterator<Component> createIterator(); 
 }
