@@ -10,9 +10,11 @@ public class WinnerState extends State{
 
     @Override
     public void dispence() {
-        if(gumball.getGums()>0){
-            System.out.println("You are luky today");
-            gumball.getSold().dispence();
+        int bingo = (int) (Math.random()*5);
+        System.out.println("Win number is 4 your number is "+bingo);
+        if(bingo==4){
+            System.out.println("You are lucky today");
+            gumball.deliver();
         }
     }
 }

@@ -24,7 +24,7 @@ public class Gumball{
 	public void setState(State state){
 		currentState = state;
 	}
-	
+
 	public State getHasQuarter() {
 		return hasQuarter;
 	}
@@ -50,12 +50,27 @@ public class Gumball{
 	}
 
 	public void setGums(int i){
-		gums=i;
-		if(gums>0) currentState = noQuarter;
-		if(gums<1) currentState = soldOut;
+		if(i>0){
+			gums=i;
+			currentState = noQuarter;
+		}
 	}
-	
-	
+
+	public void deliver(){
+		if(gums>0) {
+			gums -= 1;
+			System.out.println("Take your candy, please.");
+			if(gums>0){
+				currentState=winnerState;
+				currentState.dispence();
+			}
+			currentState = noQuarter;
+		}else{
+			currentState = hasQuarter;
+			ejectQuart();
+			currentState = soldOut;
+		}   
+	}
 	
 	public void insertQuart(){
 		currentState.insertQuart();
@@ -66,7 +81,6 @@ public class Gumball{
 	}
 
 	public void turnLever(){
-
 		currentState.turnLever();
 		currentState.dispence();
 	}

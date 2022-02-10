@@ -10,14 +10,6 @@ public class Sold extends State{
 
     @Override
     public void dispence() {
-        int x = gumball.getGums()-1;
-        if(x>0){
-            System.out.println("Take your candy, please.");
-            gumball.setGums(x);
-            gumball.setState(gumball.getNoQuarter());
-        }else{
-            gumball.setGums(0);
-            gumball.setState(gumball.getSoldOut());
-        }
+        gumball.deliver();
     }
 }

@@ -11,20 +11,13 @@ public class HasQuarter extends State{
 
     @Override
     public void turnLever() {
-        if(gumball.getGums()>0){
-            System.out.println("Yaas boss! Candy in progress!");
-            gumball.setState(gumball.getSold());
-            int winner = (int) Math.random()*10;
-            if(winner==4) gumball.setState(gumball.getWinnerState());
-        }else{
-            ejectQuart();
-            gumball.setState(gumball.getSoldOut());
-        }
+        System.out.println("Yaas boss! Candy in progress!");
+        gumball.setState(gumball.getSold());
     }
 
     @Override
     public void ejectQuart() {
-        System.out.println("Yaas boss! Your quarter.");
+        System.out.println("Sorry boss! Your quarter.");
         gumball.setState(gumball.getNoQuarter());
     }
 }
