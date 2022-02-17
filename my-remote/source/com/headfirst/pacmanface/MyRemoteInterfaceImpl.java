@@ -7,16 +7,16 @@ import java.rmi.server.UnicastRemoteObject;
 public class MyRemoteInterfaceImpl extends UnicastRemoteObject implements MyRemoteInterface{
 
     @Override
-    public String helloRMI(){
-        return "Remote Hello World";
+    public String sayHello(){
+        return "wow, I see it after 3 book";
     }
 
     public MyRemoteInterfaceImpl() throws RemoteException{}
 
     public static void main(String[] args) {
         try {
-            MyRemoteInterface implMyRMIInterface = new MyRemoteInterfaceImpl();
-            Naming.bind("Remote Hello", implMyRMIInterface);
+            MyRemoteInterface impl = new MyRemoteInterfaceImpl();
+            Naming.rebind("anotherShittyService", impl);
         } catch (Exception e) {
             e.printStackTrace();
         }

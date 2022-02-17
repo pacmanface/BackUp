@@ -11,9 +11,9 @@ public class MyRemoteClient {
 
     void go(){
         try {
-            MyRemoteInterface remoteInterface = (MyRemoteInterface) Naming.lookup("rmi//:127.0.0.1/Remote Hello");
-            String hello = remoteInterface.helloRMI();
-            System.out.println(hello);
+            MyRemoteInterface service = (MyRemoteInterface) Naming.lookup("//localhost:1099/anotherShittyService");
+            String reply = service.sayHello();
+            System.out.println(reply);
         } catch (Exception e) {
             e.printStackTrace();
         }
