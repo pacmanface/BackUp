@@ -11,6 +11,5 @@ public class TestGumball{
             gumball.turnLever();
             System.out.println(gumball);
         }
-
     }
 }
