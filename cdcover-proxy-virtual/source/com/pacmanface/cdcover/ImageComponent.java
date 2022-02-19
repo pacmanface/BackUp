@@ -1,4 +1,4 @@
-package com.pacmanface.proxycd;
+package com.pacmanface.cdcover;
 
 import java.awt.*;
 import javax.swing.*;
