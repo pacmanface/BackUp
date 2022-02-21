@@ -1,4 +1,4 @@
-package com.pacmanface.huinder;
+package com.pacmanface.dates;
 
 public class PersonBeanImpl implements PersonBean {
 	

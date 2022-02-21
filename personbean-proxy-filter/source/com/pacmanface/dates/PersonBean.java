@@ -1,4 +1,4 @@
-package com.pacmanface.huinder;
+package com.pacmanface.dates;
 
 public interface PersonBean{
 	String getName();
