@@ -25,32 +25,32 @@ public class TestImageProxy{
 		pictures.put("yalta","https://bigfoto.com/wp-content/uploads/2020/11/yalta-3984207_1280-800x445.jpg");
 		pictures.put("castle","https://bigfoto.com/wp-content/uploads/2020/11/exeter-2917470_1280-800x445.jpg");
 		
-		URL url = new URL(pictures.get("yellowstone"));
 		menuBar = new JMenuBar();
 		menu = new JMenu("Pictures");
 		menuBar.add(menu);
 		frame.setJMenuBar(menuBar);
-		
-		for(String s: pictures.keySet()){
-			JMenuItem item = new JMenuItem(s);
-			menu.add(item);
-			item.addActionListener(e->{
-				component.setIcon(new ImageProxy(getUrl(e.getActionCommand())));
-				frame.repaint();
-			});
-		}
-		
+		URL url = new URL(pictures.get("yellowstone"));
 		Icon icon = new ImageProxy(url);
 		component = new ImageComponent(icon);
 		frame.getContentPane().add(component);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800,600);
 		frame.setVisible(true);
+		
+		for(String s: pictures.keySet()){
+			JMenuItem item = new JMenuItem(s);
+			menu.add(item);
+			item.addActionListener(e->{
+				System.out.println("push the button");
+				component.setIcon(new ImageProxy(getUrl(e.getActionCommand())));
+				frame.repaint();
+			});
+		}
 	}
 	
 	URL getUrl(String s){
 		try{
-			return new URL(pictures.get(s));	
+			return new URL(pictures.get(s));
 		}catch(MalformedURLException e){
 			e.printStackTrace();
 			return null;
