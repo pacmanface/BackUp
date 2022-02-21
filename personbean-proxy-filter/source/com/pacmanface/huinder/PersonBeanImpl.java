@@ -1,6 +1,7 @@
 package com.pacmanface.huinder;
 
-public interface PersonBeanImpl{
+public class PersonBeanImpl implements PersonBean {
+	
 	private String name;
 	private String gender;
 	private String interests;
