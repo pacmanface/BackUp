@@ -15,13 +15,17 @@ public class TestImageProxy{
 	HashMap<String,String> pictures = new HashMap<>();
 	
 	public static void main(String[]args){
-		new TestImageProxy();
+		try{
+			new TestImageProxy();
+		}catch(Exception e){e.printStackTrace();}
 	}
 	
 	public TestImageProxy() throws Exception {
-		pictures.put("","");
+		pictures.put("yellowstone","https://bigfoto.com/wp-content/uploads/2020/03/yellowstone-national-park-1589616_1280-800x445.jpg");
+		pictures.put("yalta","https://bigfoto.com/wp-content/uploads/2020/11/yalta-3984207_1280-800x445.jpg");
+		pictures.put("castle","https://bigfoto.com/wp-content/uploads/2020/11/exeter-2917470_1280-800x445.jpg");
 		
-		URL url = new URL(pictures.get(""));
+		URL url = new URL(pictures.get("yellowstone"));
 		menuBar = new JMenuBar();
 		menu = new JMenu("Pictures");
 		menuBar.add(menu);
