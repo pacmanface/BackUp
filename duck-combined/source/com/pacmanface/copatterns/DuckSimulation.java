@@ -2,43 +2,69 @@ package com.pacmanface.copatterns;
 
 import com.pacmanface.copatterns.ducks.*;
 import com.pacmanface.copatterns.factories.*;
-import com.pacmanface.copatterns.lookat.Quackologist;
+import com.pacmanface.copatterns.lookat.*;
 
 public class DuckSimulation{
 	public static void main(String[]args){
-		DuckSimulation sims = new DuckSimulation();
-		Quackologist firstMan = new Quackologist();
-		Quackologist secondMan = new Quackologist();
 
-		Quack mallard = new MallardDuck();
-		Quack redHead = new RedHeadDuck();
-		Quack call = new DuckCall();
-		Quack rubber = new RubberDuck();
-		Quack goose = new GooseAdapter(new Goose());
-		sims.simulate(mallard, redHead, call, rubber, goose);
+		DuckSimulation sims = new DuckSimulation();
+
+		Quack mallard;
+		Quack redHead;
+		Quack call;
+		Quack rubber;
+		Quack goose; 
 		
 		/*
-		Flock flock = new Flock();
-		flock.addQuacker(mallard, redHead);
-		sims.simulate(flock);
+		//test 1 - duck strategy & goose adapter
+		mallard = new MallardDuck();
+		redHead = new RedHeadDuck();
+		call = new DuckCall();
+		rubber = new RubberDuck();
+		goose = new GooseAdapter(new Goose());
+		sims.simulate(mallard, redHead, call, rubber, goose);
 		*/
-		
-		AbstractDuckFactory factory = new CountDuckFactory();	
+
+		/*
+		//test_2 - counted duck factory simulation
+		AbstractDuckFactory factory = new CountDuckFactory();
+		AbstractGooseFactory gooseFactory = new GooseFactory();	
 		mallard = factory.createMallardDuck();
 		redHead = factory.createRedHeadDuck();
 		call = factory.createDuckCall();
 		rubber = factory.createRubberDuck();
+		goose = gooseFactory.createGooseCounter();
 		sims.simulate(mallard, redHead, call, rubber, goose);
+		*/
 
-		Flock flock2 = new Flock();
-		flock2.addQuacker(mallard, redHead, goose);
-		flock2.registryObserver(firstMan);
-		sims.simulate(flock2);
+		/*
+		//test_3 counted birds flocktory
+		AbstractDuckFactory factory = new CountDuckFactory();
+		AbstractGooseFactory gooseFactory = new GooseFactory();	
+		mallard = factory.createMallardDuck();
+		redHead = factory.createRedHeadDuck();
+		goose = gooseFactory.createGooseAdapter();
+		Flock flock = new Flock();
+		flock.addQuacker(mallard, redHead, goose);
+		sims.simulate(flock);
+		*/
+		
 
-		//sims.simulate(flock, flock2);
-
-
-
+		
+		//test_4 duck observation
+		Quackologist firstMan = new Quackologist();
+		AbstractDuckFactory factory = new CountDuckFactory();
+		AbstractGooseFactory gooseFactory = new GooseFactory();	
+		mallard = factory.createMallardDuck();
+		redHead = factory.createRedHeadDuck();
+		goose = gooseFactory.createGooseAdapter();
+		call = new DuckCall();
+		rubber = new RubberDuck();
+		Flock flock = new Flock();
+		flock.addQuacker(mallard, redHead, goose, rubber, call);
+		flock.registryObserver(firstMan);
+		sims.simulate(flock);
+		
 	}
 	
 	public void simulate(Quack... quacker){

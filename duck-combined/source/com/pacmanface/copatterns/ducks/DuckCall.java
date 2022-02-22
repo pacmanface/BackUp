@@ -15,6 +15,7 @@ public class DuckCall implements Quack{
 	@Override
 	public void quack(){
 		System.out.println("quack");
+		notifyObserver();
 	}
 
 	@Override
