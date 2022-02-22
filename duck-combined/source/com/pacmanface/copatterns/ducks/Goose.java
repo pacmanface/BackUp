@@ -1,4 +1,4 @@
-package com.pacmanface.copatterns;
+package com.pacmanface.copatterns.ducks;
 
 public class Goose{
 	public void honk(){

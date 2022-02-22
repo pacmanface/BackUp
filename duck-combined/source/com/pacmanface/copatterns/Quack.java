@@ -1,5 +1,7 @@
 package com.pacmanface.copatterns;
 
-public interface Quack{
+import com.pacmanface.copatterns.lookat.QuackObservable;
+
+public interface Quack extends QuackObservable{
 	void quack();
 }

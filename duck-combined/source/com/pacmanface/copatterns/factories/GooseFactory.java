@@ -1,4 +1,7 @@
-package com.pacmanface.copatterns;
+package com.pacmanface.copatterns.factories;
+
+import com.pacmanface.copatterns.*;
+import com.pacmanface.copatterns.ducks.*;
 
 public class GooseFactory extends AbstractGooseFactory{
 	@Override
