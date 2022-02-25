@@ -4,10 +4,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class DjView implements ActionListener, BPMObserver, BeatObserver{
+import com.pacmanface.djmvc.interfaces.BPMObserver;
+import com.pacmanface.djmvc.interfaces.BeatModel;
+import com.pacmanface.djmvc.interfaces.BeatObserver;
+import com.pacmanface.djmvc.interfaces.BeatController;
 
-    BeatModelInterface model;
-    ControllerInterface controller;
+public class BeatView implements ActionListener, BPMObserver, BeatObserver{
+
+    BeatModel model;
+    BeatController controller;
     
     JFrame viewFrame;
     JPanel viewPanel;
@@ -26,7 +31,7 @@ public class DjView implements ActionListener, BPMObserver, BeatObserver{
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
 
-    public DjView(BeatModelInterface b, ControllerInterface c){
+    public BeatView(BeatModel b, BeatController c){
         model = b;
         controller = c;
         model.registerObserver((BPMObserver)this);
@@ -130,7 +135,7 @@ public class DjView implements ActionListener, BPMObserver, BeatObserver{
 
     @Override
     public void updateBeat() {
-        beatBar.setValue(model.getBPM());        
+        beatBar.setValue(100);        
     }
 
     @Override

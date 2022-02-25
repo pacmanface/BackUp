@@ -1,6 +1,6 @@
-package com.pacmanface.djmvc;
+package com.pacmanface.djmvc.interfaces;
 
-public interface ControllerInterface{
+public interface BeatController{
 	void start();
 	void stop();
 	void setBPM(int bmp);

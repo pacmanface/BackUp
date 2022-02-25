@@ -1,13 +1,16 @@
 package com.pacmanface.djmvc;
 
-public class BeatController implements ControllerInterface{
+import com.pacmanface.djmvc.interfaces.BeatModel;
+import com.pacmanface.djmvc.interfaces.BeatController;
 
-    BeatModelInterface model;
-    DjView view;
+public class BeatControllerImpl implements BeatController{
 
-    public BeatController(BeatModelInterface m){
+    BeatModel model;
+    BeatView view;
+
+    public BeatControllerImpl(BeatModel m){
         model = m;
-        view = new DjView(model,this);
+        view = new BeatView(model,this);
         view.createView();
         view.createControls();
         view.disableStopMenuItem();

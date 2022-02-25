@@ -1,6 +1,6 @@
-package com.pacmanface.djmvc;
+package com.pacmanface.djmvc.interfaces;
 
-public interface BeatModelInterface{
+public interface BeatModel{
 	//own model methods
 	void init();
 	void on();

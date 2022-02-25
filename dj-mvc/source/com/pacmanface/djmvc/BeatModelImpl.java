@@ -1,9 +1,14 @@
 package com.pacmanface.djmvc;
 
 import javax.sound.midi.*;
+
+import com.pacmanface.djmvc.interfaces.BPMObserver;
+import com.pacmanface.djmvc.interfaces.BeatModel;
+import com.pacmanface.djmvc.interfaces.BeatObserver;
+
 import java.util.*;
 
-public class BeatModel implements BeatModelInterface, MetaEventListener{
+public class BeatModelImpl implements BeatModel, MetaEventListener{
     Sequencer sequencer;
     Track track;
     Sequence sequence;
