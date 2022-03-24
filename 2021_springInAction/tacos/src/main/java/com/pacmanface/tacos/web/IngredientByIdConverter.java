@@ -1,17 +1,19 @@
 package com.pacmanface.tacos.web;
 
-import java.util.HashMap;
-import java.util.Map;
-
+//import java.util.HashMap;
+//import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-
 import com.pacmanface.tacos.Ingredient;
-import com.pacmanface.tacos.Ingredient.Type;
+//import com.pacmanface.tacos.Ingredient.Type;
+import com.pacmanface.tacos.data.IngredientRepository;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
-
+	
+	//use power of thejdbc
+	/*
 	private Map<String, Ingredient> ingredientMap = new HashMap<>();
 	
 	public IngredientByIdConverter() {
@@ -26,9 +28,18 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
 		ingredientMap.put("SLSA",new Ingredient("SLSA", "Salsa", Type.SAUCE));
 		ingredientMap.put("SRCR",new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
 	}
+	*/
+	
+	private IngredientRepository repository;
+	
+	@Autowired
+	public IngredientByIdConverter(IngredientRepository repo) {
+		repository = repo;
+	}
 	
 	@Override
 	public Ingredient convert(String id) {
-		return ingredientMap.get(id);
+		return repository.findById(id).orElse(null);
+		//return ingredientMap.get(id);
 	}
 }

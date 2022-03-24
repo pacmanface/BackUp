@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 import com.pacmanface.tacos.Taco;
+import com.pacmanface.tacos.data.IngredientRepository;
 import com.pacmanface.tacos.Ingredient;
 import com.pacmanface.tacos.Ingredient.Type;
 
@@ -24,7 +26,14 @@ import com.pacmanface.tacos.Ingredient.Type;
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
-		
+	
+	private IngredientRepository repository;
+	
+	@Autowired
+	public DesignTacoController(IngredientRepository repo) {
+		repository = repo;
+	}
+	
 	@GetMapping
 	public String showDesignForm(Model model) {
 		model.addAttribute("taco", new Taco());
@@ -33,6 +42,8 @@ public class DesignTacoController {
 	
 	@ModelAttribute
 	public void addIngredientsToModel(Model model) {
+		//use power of jdbc
+		/*
 		List<Ingredient> ingredients = Arrays.asList(
 			new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
 			new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
@@ -45,6 +56,8 @@ public class DesignTacoController {
 			new Ingredient("SLSA", "Salsa", Type.SAUCE),
 			new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
 		);
+		*/
+		List<Ingredient> ingredients = (List<Ingredient>) repository.findAll();
 		
 		Type[] types = Ingredient.Type.values();
 		for (Type type : types) {
