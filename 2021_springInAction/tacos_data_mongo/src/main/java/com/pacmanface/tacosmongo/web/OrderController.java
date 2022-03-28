@@ -38,10 +38,8 @@ public class OrderController {
 	public String processOrder(@Valid TacoOrder order, Errors errors, SessionStatus sessionStatus) {
 		if(errors.hasErrors())
 			return "orderForm";
-		
 		orderRepo.save(order);
 		sessionStatus.setComplete();
-		
 		log.info("Order submitted: " + order);
 		return "redirect:/"; 
 	}

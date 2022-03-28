@@ -37,8 +37,7 @@ public class TacoOrder implements Serializable {
 	@Digits(integer=16, fraction=0, message=" set 16 digit cvv number")
 	private String ccNumber;
 	
-	@Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
-			message=" must be formatted MM/YY")
+	@Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",	message=" must be formatted MM/YY")
 	private String ccExpiration;
 	
 	@Digits(integer=3, fraction=0, message=" set 3 digit cvv number")

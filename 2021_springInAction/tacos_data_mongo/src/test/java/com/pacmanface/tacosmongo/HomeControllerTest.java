@@ -1,4 +1,4 @@
-package com.pacmanface.tacos;
+package com.pacmanface.tacosmongo;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

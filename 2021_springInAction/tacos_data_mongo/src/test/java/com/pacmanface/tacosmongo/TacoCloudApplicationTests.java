@@ -1,4 +1,4 @@
-package com.pacmanface.tacos;
+package com.pacmanface.tacosmongo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
