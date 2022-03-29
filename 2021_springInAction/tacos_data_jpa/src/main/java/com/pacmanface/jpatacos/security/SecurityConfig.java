@@ -1,15 +1,16 @@
 package com.pacmanface.jpatacos.security;
 
+import com.pacmanface.jpatacos.data.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,5 +33,15 @@ public class SecurityConfig {
                 "woody", passwordEncoder.encode("password"),
                 Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
         return new InMemoryUserDetailsManager(userDetailsList);
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository repository) {
+        return username -> {
+            com.pacmanface.jpatacos.User user = repository.findByUsername(username);
+            if(user != null) return user;
+
+            throw new UsernameNotFoundException("User " + username + " not found");
+        };
     }
 }
