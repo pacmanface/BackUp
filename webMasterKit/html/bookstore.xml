@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+<book category="fantasy">
+    <author>Joahn Rowling</author>
+    <title lang="en">Harry Potter</title>
+    <year>2005</year>
+    <price>30.00</price>
+</book>
+<book category="nerd">
+    <author>Eric T. Ray</author>
+    <title lang="en">Lerning XML</title>
+    <year>2010</year>
+    <price>59.99</price>
+</book>
+</bookstore>

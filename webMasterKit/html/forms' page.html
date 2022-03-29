@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms' page</title>
+</head>
+<body>
+   
+    <p>Form to input username & password</p>
+    <form> 
+        <label>Username <input type="text"></label>
+        <input type="submit" value="Submit name">
+        <label>Password <input type="password"></label>
+        <input type="submit" value="Submit pswd" >
+    </form>
+
+    <p>Form to input data via "radio" button</p>
+    <form>
+        <input type="radio" id="male">
+        <label for="male">Male</label>
+        <br>
+        <input type="radio" id="female">
+        <label for="female">Female</label>
+        <br>
+        <input type="radio" id="posthuman">
+        <label for="posthuman">postboy</label>
+        <br>
+        <input type="radio" id="superApe">
+        <label for="superApe">SuperApe</label>
+        <br>
+        <input type="radio" id="LGBTABCXYZ">
+        <label for="LGBTABCXYZ">LGBTABCXYZ</label>
+        <br>
+        <input type="radio" id="robot">
+        <label for="robot">Robot bip-bip</label>
+        <br>
+        <input type="radio" id="robot-bender">
+        <label for="robot-bender">Ama Benda! therobot</label>
+        <br>
+        <br>
+        <input type="submit" value="just submit it">
+
+    </form>
+
+    <p>Form to input data via checkbox</p>
+    <form>
+        <input type="checkbox" name="sports" id="soccer">
+        <label for="soccer">Soccer</label>
+    </form>
+
+    <form>
+        <label for="file-select">UPLOAD</label>
+        <input type="file" name="upload" id="file-select">
+    </form>
+
+    <form>
+        <label for="adress">Address</label>
+        <textarea name="address" id="address" cols="30" rows="10"></textarea>
+    </form>
+
+    <form >
+        <label for="city">City</label>
+        <select name="city" id="city">
+            <option value="moscow">Moscow</option>
+            <option value="astana">Astana</option>
+            <option value="tokyo">Tokyo</option>   
+        </select>
+    </form>
+    
+    <form action="action.php" method="post">
+        <label for="user">Username</label>
+        <input type="text" name="userIds" id="user">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Contacts</legend>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <label for="phone">Phone</label>
+            <input type="phone" name="phone" id="phone">
+        </fieldset>
+    </form>
+
+</body>
+</html>
