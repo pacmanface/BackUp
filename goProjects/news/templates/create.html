@@ -1,0 +1,17 @@
+{{define "create"}}
+
+{{template "header"}}
+
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Давай, ебашь свою хуйню</h1>
+    <form action="/save_article" method="post">
+        <input type="text" name="title" id="title" placeholder="input article name" class="form-control"><br>
+        <textarea name="anons" id="anons" class="form-control" placeholder="input anons"></textarea><br>
+        <textarea name="full_text" id="full_text" class="form-control" placeholder="input main text"></textarea><br>
+        <button class="btn btn-warning">Воронок выехал!</button>
+    </form>
+</main>
+
+{{template "footer"}}
+
+{{end}}
