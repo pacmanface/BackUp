@@ -1,0 +1,6 @@
+#!/bin/bash
+#multiple input demo script
+
+echo -n "Please input some arguments ->" 
+read varA varB varC varD
+echo "$varA $varB $varC $varD"

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#simple string check script
+
+ANSWER=maybe
+
+if [ -z "$ANSWER" ]; then
+	echo "There is no answer." >&2
+	exit
+fi
+
+if [ "$ANSWER" == "yes" ]; then
+	echo "The answer is yes."
+
+elif [ "$ANSWER" == "no" ]; then
+	echo "The answer is no."
+
+elif [ "$ANSWER" == "maybe" ]; then
+	echo "The answer is may be."
+
+else
+	echo "The answer is UNKNOW."
+fi
+
+   

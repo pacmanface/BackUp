@@ -1,0 +1,10 @@
+# this file contains source code with comments
+
+# this string is a comment
+# next string is also a comment
+# and this one too
+
+this is code
+one more string with a code
+code too
+

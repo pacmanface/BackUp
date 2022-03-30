@@ -1,0 +1,25 @@
+#!/bin/bash
+#integer checks algorithm with user input.
+
+echo -n "Please input a number ->"
+read INT
+
+if [ -z "$INT" ]; then
+	echo "empty input." >&2
+	exit 1
+fi
+
+if [[ "$INT" =~ -?[0-9]+$ ]]; then
+	if [ "$INT" -eq 0 ]; then echo "$INT is zero."
+	elif [ "$INT" -lt 0 ]; then echo "$INT - negative integer."
+	else echo "$INT - positive integer."
+	fi
+	
+	if [ $((INT % 2)) -eq 0 ]; then echo "$INT is even."
+	else echo "$INT is odd."
+	fi
+else
+	echo "it's not a number" >&2
+	exit 1
+fi
+ 

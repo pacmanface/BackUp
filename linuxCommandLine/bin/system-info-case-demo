@@ -1,0 +1,30 @@
+#!/bin/bash
+#system information script with menu
+
+delay=3 #time delay in seconds
+
+home_space () {
+	if [[ "$(id -u)" -eq 0 ]]; then echo "Home Space Utilization (All Users)"; du -sh /home/*
+	else echo "Home Space Utilization ($USER)";	du -sh "$HOME"
+	fi
+}
+
+while true; do
+	clear
+	cat <<- _EOF_
+		Please Select:
+		1. Display System Information
+		2. Display Disk Space
+		3. Display Home Space Utilization
+		0. Quit
+		_EOF_
+	read -p "Please, select a menu item ->"
+	case $REPLY in
+		0) break;; 
+		1) echo "Hostname: $HOSTNAME"; uptime; sleep "$delay"; continue;;
+		2) df -h; sleep "$delay"; continue;;
+		3) $home_space; sleep "$delay";	continue;;
+		*) echo "Invalid entry. Try again."; sleep "$delay";;
+	esac
+done
+echo "Programm terminated. Bye-bye"

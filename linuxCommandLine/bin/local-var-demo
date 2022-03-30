@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#demonstration scenario of the local variables
+
+foo=0
+
+foo1 () {
+	local foo=1
+	echo "local foo is $foo"
+	return
+}
+
+foo2 () {
+	local foo=2
+	echo "local foo is $foo"
+	return
+}
+
+echo "foo variable is $foo now"
+foo1
+echo "foo variable is $foo now"
+foo2
+echo "foo variable is $foo now"

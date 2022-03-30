@@ -1,0 +1,145 @@
+MY LOVELY ARCH
+tree 								- show files' tree in directory
+clear 								- clear the CLI
+exit								- close the CLI
+reboot 								- restart
+shutdown -h 19.30                   - shutdown system in 19.30
+mc									- open file manager wow!
+wget - c http://example.com 		- download files with link
+cd home/user/example 				- move you to the example directory
+cd ~/example  						- move you to the example directory
+mkdir example						- create example directory
+mkdir -p home/user/com/example 		- create path
+mv example example2					- copy directory(files too) example to example2 and delete example
+mv example /home/user				- move directory(files too) example to /home/user
+rm -rf home/user/example 			- remove files (-f) and directories recurcievly (-r)
+ln 									- provide link between files
+ls									- show files & directories in the directory
+ls -l example.txt					- show file' permissions
+chmod								- change file' permissions
+chow								- change file' owner
+lshw								- list hardwear
+
+touch example.file 					- create file
+cat example.file 					- show file in CLI
+less example.file 					- open file in CLI text editot
+gedit example.file 					- open file in gedit
+code								- open vscode
+code example.file 					- open file in vscode
+code -r								- open last file in vscode
+								
+tar xvfz 							- extract files from tar.gz
+jar -cvmf <jarname.jar> <manifest.txt/mf file> <.class files to pack>  - create .jar file
+jar -xf example.jar 				- extract files from example JAR-file
+jar -tf example.jar 				- show archived files as table
+
+localhost 							- open firefox tab http://localhost:8080/
+hostname -i 						- shows my host number
+ip addr 							- show my ip
+firefox 							- open browser
+
+powertop							- shows power consumption stats
+powertop --csv(--html)				- output csv(html) file
+powertop --calibrate				- calibrate power data
+upower -d							- fast power consumption data
+
+
+SSH
+ssh-keygen -t <algorithm> -C <login@mail.com>  	- create the pair of ssh-keys in /.ssh folder use algorithm and tag
+ssh-keygen  									- create rsa key pair in derictory
+eval 'ssh-agent' 								- run ssh-agent as a daemon
+ssh-add 										- add all private keys to ssh-agent from /.ssh directory
+ssh-add <private key> 							- add the key to ssh-agent from the directory
+ssh -T <url>  									- connect to the url via public ssh-key
+ssh -i <public key> -T <url> 					- connect to the url without ssh-agent
+ssh-agent -k 									- kill ssh-gent process
+ssh-keygen -R <hostname> 						- delete key for known host (hostname example - git@github.com)
+
+
+SPRING
+spring init -d=somedependancy /path 			- download spring-boot project from start.spring.io to /Spath
+spring jar example.jar example.file 			- create fat jar file
+
+
+MVN
+mvn spring-boot:run 							- run maven spring project from CLI
+mvn clean package 								- build the spring maven project
+
+
+GRADLE
+gradle init 									- create gradle project in the directory
+gradle tasks 									- show available gradle tasks
+gradle build example.file 						- build spring gradle project
+gradle buildRan 								- run spring gradle project  
+
+
+JAVA
+javac *.java 									- compile all .java files in the directory and add .class files here
+javac example.java 								- compile example.java and add example.class to the directory
+javac -classpath(cp) lib/*jar					- load all jar files from lib for compiling
+javac -d ../class example.java 					- compile example.java in the source directory and add example.class to files to class directory
+java example.class 								- run java .class files
+java -jar example.jar 							- run .jar file
+serialver Foo									- show the class Foo SerialVersion UID long number
+
+
+GITHUB
+gh repo create - create remote repository on github.com
+
+
+GIT
+git help <verb> 
+git <verb> --help
+man git -<verb>
+git <verb> -h -quick refresher
+
+git config --list 										- show all settings of the config file
+git config --global user.name "example" 				- set user for all repo in the system
+git config --global user.email "example@mail.com" 		- set user for all repo in the system
+git config --global core.editor vim 					- set text editor for text messages
+git config --global init.defaultBranchname main 		- set default branch name main, but possible to set any name
+git config --global alias.ci commit 					- set short command. ci=commit.
+git config --global alias.last 'log -1 HEAD' 			- creat git command git last to show last commit log.
+git config <key> 										- get config file variable value by key (user.name = "example")
+
+git clone <url> mydir 									- clone remote repository to mydir
+git init <name> 										- create local repository in the directory
+git add <filename> 										- add the file to local repository
+git add -v <file> <file> 								- add files to local repository
+git add * 												- add all files from the directory to the local repository
+git restore <file> 										- discard changes in working directory
+git restore --staged <file> 							- unstage file from local repository 
+git commit -m <text message> 							- save files in local repository
+git commit -a 											- automatically add changed sfiles to local repository before commit. Skip the git add part.
+git rm <file>											- delete file and remove it from local repository. File is untracked now. Git delete file from remote after commit+push.
+git rm --cashed <file> 									- remove file from local and remote repository, but save it on hard drive.
+git mv <filename1> <filename2> 							- rename stagged file.
+git tag -l 												- show the list of the tags
+git tag -a <v0.0> m <v0.0 comment> 						- create annotated tag
+git tag <v0.0> -lw 										- create lightweight tag
+git show v0.0 											- show v0.0 data along with commit
+git tag -d <v0.0> 										-delete tag from local repository
+
+git status 												- show the status of the local repository branch
+git status -s 											- show short message
+git log 												- show local repository's id
+git log -stat 											- show additional info about commits SEE LOG OPTIONS FILE	
+git log --pretty=format:"%h - %an, %ar : %s" 			- format log option SEE FORMAT SPECS FILE 
+
+git remote set-url <origin> <git@github.com:your/repo.git> - set my ssh repository as the origin
+git remote set-url <origin> <https://github.com/your/repo.git> - set my https repository as the origin
+
+git remote -v 											- show actual remote repository for local repository
+git remote show <origin> 								- show detailed info about origin
+git remote add origin <url/ssh> 						- add remote repository as origin
+git remote rm <origin> 									- remove signed remote repository from origin for local repository
+git remote rename <origin> <newnamefororigin> 			- rename origin for the local repository
+
+git push --set upstream origin main 					- An upstream branch is a remote branch that is being tracked by a local branch. make remote+local
+git push <origin> 										- export local repository content to the <origin> remote repository
+
+git fetch 												- update repository with remote
+git branch <branch name> 								- make new branch
+
+git swing -. 											- change the current branch to previous
+

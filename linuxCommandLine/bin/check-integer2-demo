@@ -1,0 +1,20 @@
+#!/bin/bash
+#integer check algorithm with modern test function ability
+
+INT=8
+
+if [[ "$INT" =~ ^-?[0-9]+$ ]]; then
+	if ((INT == 0)); then echo "it's a zero."
+	else
+		if ((INT < 0)); then echo "negative integer - $INT"
+		else echo "positive integer - $INT"
+		fi
+		
+		if (( ((INT % 2)) == 0)); then echo "even integer - $INT"
+		else echo "odd integer - $INT"
+		fi
+	fi
+else
+	echo "$INT it's not an integer." >&2
+	exit 1
+fi 

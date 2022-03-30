@@ -1,0 +1,6 @@
+#!/bin/bash
+#script read to default variable
+
+echo -n "Please, input something ->"
+read
+echo "$REPLY"

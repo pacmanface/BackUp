@@ -1,0 +1,24 @@
+#!/bin/bash
+#integer checks algorithm demo script
+
+INT=5
+
+if [ -z "$INT" ]; then
+	echo "$INT is empty." >&2
+fi
+
+if [ "$INT" -eq 0 ]; then
+	echo "$INT is zero."
+else
+	if [ "$INT" -lt 0 ]; then
+		echo "$INT - negative integer."
+	else
+		echo "$INT - positive integer."
+	fi
+	
+	if [ $((INT % 2)) -eq 0 ]; then
+		echo "$INT is even."
+	else
+		echo "$INT is odd."
+	fi
+fi 

@@ -1,0 +1,14 @@
+#!/bin/bash
+#file information demo script to demonstrate position parameters into function
+#set -x
+#PROGNAME="$(basename "$0")"
+#set +x
+
+file_info () {
+	if [[ -e "$1" ]];
+	then echo -e "\nFile Type:"; file "$1"; echo -e "\nFile Status:"; stat "$1"
+	else echo "$FUNCNAME: usage: $FUNCNAME file" >&2; return 1
+	fi
+}
+
+file_info ./hello.html

@@ -1,0 +1,9 @@
+#!/bin/bash
+#read strings from .txt file with while and read script
+#while also can be used | in | conv |
+
+sort -k 1,1 -k 2n ~/Projects/linuxCommandLine/texted/distros/newdistros.txt | while read name release date;
+do printf "Distro - Version: %s\tRelease: %s\tDate: %s\n" $name $release $date;
+done
+
+

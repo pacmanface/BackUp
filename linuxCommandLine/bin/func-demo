@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#function demo scenario
+
+step2 () {
+	echo Step2
+	return
+}
+
+echo Step1 #scenario start point
+step2
+echo Step3
