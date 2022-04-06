@@ -11,11 +11,11 @@ class Team {
     static hasmany = [players: Player]
 
     static constraints = {
-        name size: 5..30, blank: false, uniq: true
-        city size: 5..30, blank: false
-        stadium size: 5..30, blank: false
-        logo size: 5..30, blank: false
-        manager size: 5..30, blank: false
+        name size: 4..30, blank: false, uniq: true
+        city size: 4..30, blank: false
+        stadium size: 4..30, blank: false
+        logo size: 4..30, blank: false
+        manager size: 4..30, blank: false
     }
 
     String toString() {
