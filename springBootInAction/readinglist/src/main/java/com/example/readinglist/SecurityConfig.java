@@ -34,9 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
             .userDetailsService(
                     return username -> {
-
-        }
-                    new UserDetailsService() {
+                        new UserDetailsService() {
                 @Override
                 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                     Reader reader = repository.findByUsername(username);

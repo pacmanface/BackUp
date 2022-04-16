@@ -6,6 +6,7 @@ import spock.lang.Specification
 class PlayerSpec extends Specification implements DomainUnitTest<Player> {
 
     def setup() {
+        def player = new Player(name:'joe',age: 19,position: 'back')
     }
 
     def cleanup() {

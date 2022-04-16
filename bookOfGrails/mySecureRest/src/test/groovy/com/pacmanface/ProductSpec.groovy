@@ -1,9 +1,9 @@
 package com.pacmanface
 
-import grails.testing.services.ServiceUnitTest
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class StudentServiceSpec extends Specification implements ServiceUnitTest<StudentService>{
+class ProductSpec extends Specification implements DomainUnitTest<Product> {
 
     def setup() {
     }
